@@ -91,4 +91,5 @@ def main():
 
     print("All operations complete! Elapsed time: %.2f s" % (time.time() - start_time))
 
-if
+if __name__ == "__main__":
+    main()
