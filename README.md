@@ -1,6 +1,14 @@
 # Knight Lab AI Editorial Model Training (FQ24)
 A Python-based image preprocessing tool developed for Northwestern University's Knight Lab (FQ24) to standardise image dimensions and formats for LoRA training. The tool also offers facial recognition-based cropping to centre faces in each image where possible.
 
+```shell
+python image_parser.py <input_folder> \
+                        [--crop-size SIZE (default: 512)] \
+                        [--format FORMAT (default: 'png')] \
+                        [--skip-labels] \
+                        [--facial-recognition]
+```
+
 ## Overview
 This script processes a folder of images by:
 1. **Resizing**: Adjusts images to a specified target size while maintaining aspect ratio
@@ -34,32 +42,32 @@ This script takes the following arguments:
 ### Example Usage
 1. Prepare your input image folder: create a folder containing images you want to process with corresponding labels in `.txt` format
 2. Clone this repo and navigate to the project directory
-   ```
+   ```shell
    git clone https://github.com/knight-lab-ai/FQ24-image-parser.git
    cd /path/to/FQ24-image-parser
    ```
-4. Install requirements:
-   ```
+3. Install requirements:
+   ```shell
    pip install -r requirements.txt
    ```
-5. To run the script..
+4. To run the script...
    a. with basic cropping mode:
-   ```
+   ```shell
    python3 image_parser.py /path/to/input_folder [--crop-size=512] [--format=png] [--skip-labels]
    ```
    b. with facial recognition cropping:
-   ```
+   ```shell
    python3 image_parser.py /path/to/input_folder --facial-recognition [--crop-size=512] [--format=png] [--skip-labels]
    ```
    c. (example) with facial recognition cropping, skipping copying label files:
-   ```
+   ```shell
    python3 image_parser.py /path/to/input_folder --skip-labels --facial-recognition
    ```
    d. (example) with basic cropping, with size 256x256 and of format jpg:
-   ```
+   ```shell
    python3 image_parser.py /path/to/input_folder --format=jpg --crop-size=256
    ```
-6. Processed images are saved in a new folder named `<input_folder>_cleaned` or `<input_folder>_cleaned_facial_recognition` if `--facial-recognition` is enabled.
+5. Processed images are saved in a new folder named `<input_folder>_cleaned` or `<input_folder>_cleaned_facial_recognition` if `--facial-recognition` is enabled.
 
 ## Functions Overview
 - `resizer(img, target_size)`: Resizes the image’s smallest side to `target_size` while maintaining aspect ratio.
